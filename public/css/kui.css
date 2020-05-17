@@ -1,3 +1,7 @@
 .text-left {
-  text-align: left;
+    text-align: left;
+}
+
+.van-nav-bar__right, .van-nav-bar__left {
+    height: 100%;
 }
