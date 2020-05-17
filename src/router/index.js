@@ -5,6 +5,7 @@ import Camera from '../views/Camera.vue';
 import OpenInApp from '../views/OpenInApp.vue';
 import Login from '../views/login/Login.vue';
 import CustHome from '../views/customer/CustHome.vue';
+import CustAdd from '../views/customer/CustAdd.vue';
 
 Vue.use(VueRouter);
 
@@ -42,6 +43,11 @@ const routes = [
     path: '/cust/home',
     name: 'CustHome',
     component: CustHome,
+  },
+  {
+    path: '/cust/add',
+    name: 'CustAdd',
+    component: CustAdd,
   },
 ];
 

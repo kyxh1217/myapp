@@ -3,7 +3,7 @@
     <van-row id="div1">
       <van-nav-bar title="客户" left-arrow @click-left="onClickLeft">
         <template #right>
-          <van-icon name="add-o" size="18"/>
+          <van-icon name="add-o" size="18" @click="toAddPage"/>
         </template>
       </van-nav-bar>
       <DivSep sep-height="20"/>
@@ -25,7 +25,7 @@
           @load="onLoad"
         >
           <van-cell v-for="item in list" :key="item" :title="'姓名'+item" value="1805252xxxx" size="large" label="描述信息"
-                    is-link title-class="text-left"/>
+                    is-link title-class="text-left" :to="{path:'/cust/add',query:{custId:'abc'}}"/>
         </van-list>
       </van-pull-refresh>
     </van-row>
@@ -34,6 +34,7 @@
 
 <script>
 import DivSep from '../../components/DivSep.vue';
+import AppConstants from '../../constant/AppConstants';
 
 export default {
   name: 'CustHome',
@@ -81,12 +82,19 @@ export default {
     },
     onCancel() {
     },
+    toAddPage() {
+      this.$router.push('/cust/add');
+    },
   },
   mounted() {
     const div1 = document.getElementById('div1');
     const div1Height = window.parseInt(window.getComputedStyle(div1).height || 10);
     const div2 = document.getElementById('div2');
-    div2.style.height = `${window.screen.availHeight - div1Height - 120}px`;
+    let navBarHeight = 0;
+    if (window[AppConstants.JS_BRIDGE]) {
+      navBarHeight = window[AppConstants.JS_BRIDGE].getNavbarHeight();
+    }
+    div2.style.height = `${window.screen.availHeight - div1Height - navBarHeight}px`;
   },
 };
 </script>

@@ -5,3 +5,7 @@
 .van-nav-bar__right, .van-nav-bar__left {
     height: 100%;
 }
+
+.van-field__label {
+    text-align: left;
+}
